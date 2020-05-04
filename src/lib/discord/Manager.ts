@@ -7,6 +7,7 @@ import { getPriority } from "os";
 
 export class BotManager {
   public rest: REST;
+  public user: UserData;
 
   public voiceStates: Map<string, VoiceState> = new Map();
   public users: Map<string, UserData> = new Map();
@@ -14,6 +15,11 @@ export class BotManager {
   public constructor(public helper: BotHelper, options: SetupOptions) {
     this.rest = new REST(options.rest ?? {});
     this.rest.token = options.token;
+
+    helper.shard.once("ready", async () => {
+      this.user = (await this.rest.get("/users/@me")) as UserData;
+      await this.helper.music.init(this.user.id);
+    });
   }
 
   public async fetchUser(id: string): Promise<UserData> {

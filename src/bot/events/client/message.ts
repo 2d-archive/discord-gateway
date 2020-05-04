@@ -41,7 +41,6 @@ export default class MessageListener extends Listener {
 
         const songs = await this.helper.music.resolve(args.join(" "));
         await player.play(songs.tracks[0].track);
-        player.on("end", () => this.helper.music.leave(message.guild_id));
         break;
     }
   }

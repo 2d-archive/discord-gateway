@@ -182,6 +182,7 @@ export class Shard extends EventEmitter {
   }
 
   private async setHeartbeatInterval() {
+    this.debug(`(HEARTBEAT - Timer) Setting heartbeat interval for every ${Math.round(this.heartbeatInterval / 1000)} seconds`);
     if (this.heartbeat) clearInterval(this.heartbeat);
     this.heartbeat = setInterval(
       () => this.sendHeartbeat(),
@@ -192,7 +193,9 @@ export class Shard extends EventEmitter {
   private async ackHeartbeat() {
     this.lastHeartbeatAcked = true;
     this.ping = Date.now() - this.lastHeartbeat;
-    this.debug(`(HEARTBEAT) Gateway acknowledged heartbeat. Latency: ${this.ping}ms`);
+    this.debug(
+      `(HEARTBEAT) Gateway acknowledged heartbeat. Latency: ${this.ping}ms`
+    );
   }
 
   private async sendHeartbeat(type = "Timer") {

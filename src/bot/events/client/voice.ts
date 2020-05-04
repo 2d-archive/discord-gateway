@@ -14,6 +14,6 @@ export default class VoiceUpdatesListener extends Listener {
       this.helper.music.stateUpdate(update);
     } else this.helper.music.serverUpdate(update);
 
-    return this.logger.debug("(SERVER) Provided voice updates to Lavaclient.");
+    return this.logger.debug("(VOICE) Provided voice updates to Lavaclient.");
   }
 }
