@@ -1,0 +1,27 @@
+{
+  "name": "discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "prestart": "rimraf build & tsc",
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ayanaware/logger": "^2.2.1",
+    "@klasa/rest": "^0.1.0",
+    "dot-prop": "^5.2.0",
+    "lavaclient": "^1.0.18",
+    "lavaclient-rest-plugin": "^1.0.8",
+    "ws": "^7.2.5",
+    "yaml": "^1.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/ws": "^7.2.4",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  }
+}
